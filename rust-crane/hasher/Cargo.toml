@@ -1,0 +1,9 @@
+[package]
+name = "hasher"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+openssl = { workspace = true }
+anyhow = { workspace = true }
+hex = "0.4"

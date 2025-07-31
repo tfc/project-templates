@@ -1,0 +1,9 @@
+[package]
+name = "hash-folder"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+hasher = { path = "../hasher" }
+clap = { workspace = true }
+anyhow = { workspace = true }

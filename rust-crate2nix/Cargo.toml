@@ -1,0 +1,8 @@
+[workspace]
+members = ["hasher", "hash-file", "hash-folder"]
+resolver = "2"
+
+[workspace.dependencies]
+openssl = "0.10"
+anyhow = "1.0"
+clap = { version = "4.0", features = ["derive"] }
