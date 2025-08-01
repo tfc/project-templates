@@ -37,7 +37,19 @@
           ...
         }:
         let
-          crate = import ./Cargo.nix { inherit pkgs lib; };
+          crate = import ./Cargo.nix {
+            inherit pkgs lib;
+            defaultCrateOverrides = pkgs.defaultCrateOverrides // {
+              hash-file = _attrs: {
+                buildInputs = [
+                  pkgs.openssl
+                  pkgs.openssl.dev
+                ];
+                nativeBuildInputs = [ pkgs.pkg-config ];
+                env.PKG_CONFIG_PATH = "${pkgs.openssl.dev}/lib/pkgconfig";
+              };
+            };
+          };
           #crate-ifd = inputs.crate2nix.tools.${system}.appliedCargoNix {
           #  name = "hasher";
           #  src = lib.fileset.toSource {
