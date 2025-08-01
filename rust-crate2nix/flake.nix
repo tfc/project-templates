@@ -38,19 +38,19 @@
         }:
         let
           crate = import ./Cargo.nix { inherit pkgs lib; };
-          crate-ifd = inputs.crate2nix.tools.${system}.appliedCargoNix {
-            name = "hasher";
-            src = lib.fileset.toSource {
-              root = ./.;
-              fileset = lib.fileset.unions [
-                ./hasher
-                ./hash-file
-                ./hash-folder
-                ./Cargo.toml
-                ./Cargo.lock
-              ];
-            };
-          };
+          #crate-ifd = inputs.crate2nix.tools.${system}.appliedCargoNix {
+          #  name = "hasher";
+          #  src = lib.fileset.toSource {
+          #    root = ./.;
+          #    fileset = lib.fileset.unions [
+          #      ./hasher
+          #      ./hash-file
+          #      ./hash-folder
+          #      ./Cargo.toml
+          #      ./Cargo.lock
+          #    ];
+          #  };
+          #};
         in
         {
           devShells.default = pkgs.mkShell {
@@ -71,9 +71,9 @@
             hash-folder = crate.workspaceMembers.hash-folder.build;
             hasher = crate.workspaceMembers.hasher.build;
 
-            hash-file-ifd = crate-ifd.workspaceMembers.hash-file.build;
-            hash-folder-ifd = crate-ifd.workspaceMembers.hash-folder.build;
-            hasher-ifd = crate-ifd.workspaceMembers.hasher.build;
+            #hash-file-ifd = crate-ifd.workspaceMembers.hash-file.build;
+            #hash-folder-ifd = crate-ifd.workspaceMembers.hash-folder.build;
+            #hasher-ifd = crate-ifd.workspaceMembers.hasher.build;
           };
 
           checks = self'.packages // {
