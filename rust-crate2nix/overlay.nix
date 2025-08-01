@@ -1,4 +1,4 @@
-final: prev:
+final: _prev:
 let
   crate = import ./Cargo.nix {
     pkgs = final;

@@ -2,6 +2,8 @@
   description = "Rust Hasher Example Project";
 
   inputs = {
+    # this extra dependency can be dropped when not using IFD.
+    # instead, just use pkgs.crate2nix from nixpkgs then
     crate2nix.url = "github:nix-community/crate2nix";
     crate2nix.inputs.nixpkgs.follows = "nixpkgs";
     crate2nix.inputs.flake-parts.follows = "flake-parts";
